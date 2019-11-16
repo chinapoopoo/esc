@@ -20,7 +20,7 @@ const trContent = (index, item) =>
 
 function getInfo() {
   $.ajax({
-    url: "http://52.78.60.187:3000/v3/info",
+    url: "https://bluelim.dev/api/v3/info",
     method: "GET",
     dataType: "json"
   })
@@ -31,8 +31,5 @@ function getInfo() {
     })
     .fail((xhr, status, errorThrown) => {
       console.log(errorThrown);
-    })
-    .always((xhr, status) => {
-      console.log("request done");
     });
 }

@@ -1,0 +1,25 @@
+textarea,
+.translated {
+  width: 100%;
+  height: 300px;
+  border: 1px solid lightgrey;
+  resize: none;
+  padding: 20px;
+  font-size: 25px;
+  color: black;
+  font-weight: 500;
+}
+
+.translated {
+  background: #fdfdfd;
+}
+
+.lan-label {
+  font-size: 17px;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.esc-btn {
+  float: right;
+}

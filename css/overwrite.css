@@ -255,3 +255,60 @@ a.btn,
 a.scrollup {
   bottom: 4px !important;
 }
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.last-div {
+  margin-top: 0px !important;
+}
+
+.navbar-header {
+  transform: translateY(65%);
+}
+
+.navbar-brand {
+  padding: 0 !important;
+  height: unset !important;
+  float: unset !important;
+  line-height: unset !important;
+}
+
+a {
+  cursor: pointer;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.esc-btn {
+  width: fit-content;
+  margin: 10px 0px;
+  padding: 10px 15px;
+  background: #109173;
+  color: white;
+  cursor: pointer;
+}
