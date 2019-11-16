@@ -23,8 +23,5 @@ function getInfo() {
     })
     .fail((xhr, status, errorThrown) => {
       console.log(errorThrown);
-    })
-    .always((xhr, status) => {
-      console.log("request done");
     });
 }
