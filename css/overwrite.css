@@ -268,3 +268,14 @@ footer {
 .last-div {
   margin-top: 0px !important;
 }
+
+.navbar-header {
+  transform: translateY(65%);
+}
+
+.navbar-brand {
+  padding: 0 !important;
+  height: unset !important;
+  float: unset !important;
+  line-height: unset !important;
+}

@@ -45,7 +45,7 @@ function headerContent() {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><span>ESC</span></a>
+                <a class="navbar-brand" href="index.html"><span>ESCommunity</span></a>
             </div>
             <div class="navbar-collapse collapse">
                 <div class="menu">
