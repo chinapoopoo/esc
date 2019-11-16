@@ -28,6 +28,7 @@ const mkLoginBtn = () =>
 $(document).ready(() => {
   $("head").append(kakaoScript);
   $("body").prepend(headerContent());
+  $("body").append("<br /><br /><br />");
   $("body").append(footerContent());
   [
     popularContent(),
