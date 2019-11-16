@@ -255,3 +255,16 @@ a.btn,
 a.scrollup {
   bottom: 4px !important;
 }
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.last-div {
+  margin-top: 0px !important;
+}
