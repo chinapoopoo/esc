@@ -279,3 +279,7 @@ footer {
   float: unset !important;
   line-height: unset !important;
 }
+
+a {
+  cursor: pointer;
+}

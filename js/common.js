@@ -1,14 +1,5 @@
-$(document).ready(() => {
-  $("body").prepend(headerContent());
-  $("body").append(footerContent());
-  [
-    popularContent(),
-    popularContent(),
-    popularContent(),
-    popularContent()
-  ].map(content => $(".panel-default").append(content));
-});
-
+const kakaoScript =
+  '<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>';
 const getActiveIndex = () => {
   const path = window.location.pathname;
   let index = -1;
@@ -28,6 +19,23 @@ const getActiveIndex = () => {
   return index;
 };
 const isActive = index => (getActiveIndex() == index ? "class='active'" : "");
+const isLoggedIn = () => localStorage.getItem("id") != null;
+const mkLoginBtn = () =>
+  isLoggedIn()
+    ? '<li role="presentation"><a onclick="logout()">Logout</a></li>'
+    : '<li role="presentation"><a onclick="login()">Login</a></li>';
+
+$(document).ready(() => {
+  $("head").append(kakaoScript);
+  $("body").prepend(headerContent());
+  $("body").append(footerContent());
+  [
+    popularContent(),
+    popularContent(),
+    popularContent(),
+    popularContent()
+  ].map(content => $(".panel-default").append(content));
+});
 
 function headerContent() {
   return `
@@ -65,9 +73,7 @@ function headerContent() {
                         <li ${isActive(
                           4
                         )} role="presentation"><a href="translation.html">Translation</a></li>
-                        <li ${isActive(
-                          5
-                        )} role="presentation"><a href="">Login</a></li>
+                        ${mkLoginBtn()}
                     </ul>
                 </div>
             </div>
@@ -117,4 +123,62 @@ function popularContent() {
         </div>
     </div>
     `;
+}
+
+function login() {
+  if (!Kakao.isInitialized()) Kakao.init("f07bb729df8eeca982ea2d27647fde64");
+  Kakao.Auth.login({
+    success: authObj => {
+      Kakao.API.request({
+        url: "/v2/user/me",
+        success: res => {
+          const accountInfo = res.kakao_account.profile;
+          alert(`Welcome ${accountInfo.nickname}!`);
+          setUserInfo(
+            res.id,
+            accountInfo.nickname,
+            accountInfo.profile_image_url,
+            accountInfo.thumbnail_image_url
+          );
+          location.reload();
+        },
+        fail: error => {
+          console.log(error);
+        }
+      });
+    },
+    fail: err => {
+      console.log(err);
+    }
+  });
+}
+
+function setUserInfo(id, nickname, profile_image_url, thumbnail_image_url) {
+  localStorage.setItem("id", id);
+  localStorage.setItem("nickname", nickname);
+  localStorage.setItem("profile_image_url", profile_image_url);
+  localStorage.setItem("thumbnail_image_url", thumbnail_image_url);
+}
+
+function logout() {
+  if (confirm("Are you sure you want to logout?")) {
+    localStorage.removeItem("id");
+    localStorage.removeItem("nickname");
+    localStorage.removeItem("profile_image_url");
+    localStorage.removeItem("thumbnail_image_url");
+    location.reload();
+  }
+}
+
+function getUser() {
+  if (!isLoggedIn()) {
+    alert("You have to login first.");
+    login();
+  } else
+    return {
+      id: localStorage.getItem("id"),
+      nickname: localStorage.getItem("nickname"),
+      profile_image_url: localStorage.getItem("profile_image_url"),
+      thumbnail_image_url: localStorage.getItem("thumbnail_image_url")
+    };
 }
