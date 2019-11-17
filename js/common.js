@@ -1,7 +1,7 @@
 const kakaoScript =
   '<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>';
 const getActiveIndex = () => {
-  const path = window.location.pathname;
+  const path = window.location.pathname.replace("/esc", "");
   let index = -1;
 
   if (path == "/" || path == "/index.html") {
