@@ -1,0 +1,157 @@
+.chat-container {
+  height: 600px;
+  background: #fdfdfd;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+}
+
+img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.party-list {
+  padding: 20px;
+  overflow: scroll;
+  height: 100%;
+}
+
+.chat-list {
+  overflow: scroll;
+  height: 100%;
+}
+
+.party-list {
+  width: 25%;
+  background: #f5f6fa;
+}
+
+.chat-list {
+  width: 75%;
+  box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.part-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: #666666;
+  margin-bottom: 26px;
+}
+
+.part-title span {
+  font-size: 14px;
+  color: #999999;
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #777777;
+}
+
+.participant img {
+  margin-right: 15px;
+}
+
+.participant .name {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.messages {
+  padding: 20px;
+}
+
+.chat-input {
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #f5f6fa;
+  padding: 10px 20px;
+}
+
+.chat-input input {
+  width: 100%;
+  border: none;
+  background: #f5f6fa;
+  font-size: 14px;
+  color: #666666;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 15px;
+  color: #777777;
+  max-width: 40%;
+}
+
+.message img {
+  margin-right: 15px;
+}
+
+.message .content {
+  background: #f2f3f7;
+  padding: 10px 15px;
+  margin: 3px 0px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.message .name {
+  font-size: 14px;
+}
+
+.message .date {
+  font-size: 11px;
+}
+
+.mine {
+  display: flex;
+  margin-bottom: 15px;
+  color: #777777;
+  max-width: 40%;
+  justify-content: flex-end;
+}
+
+.mine img {
+  margin-left: 15px;
+  width: inherit;
+}
+
+.mine .content {
+  background: #81c4f7;
+  color: white;
+  padding: 10px 15px;
+  margin: 3px 0px;
+  border-radius: 5px;
+  text-align: left;
+  width: fit-content;
+}
+
+.mine .name {
+  font-size: 14px;
+  text-align: right;
+}
+
+.mine .date {
+  font-size: 11px;
+}
+
+.mine {
+  margin-left: 60%;
+  text-align: right;
+}
+
+.mine .col {
+  align-items: flex-end;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
