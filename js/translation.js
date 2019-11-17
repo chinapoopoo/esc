@@ -1,19 +1,29 @@
 $(document).ready(() => {
-  translate();
+  $(".esc-btn").click(e => {
+    e.preventDefault();
+    translate();
+  });
 });
 
 function translate() {
+  const text = $("#textarea").val();
+
+  if (text.length === 0) {
+    alert("Please fill in a textbox!");
+    return;
+  }
+
   $.ajax({
-    url: "http://127.0.0.1:3000/translate",
+    url: "https://bluelim.dev/translate/translate",
     method: "POST",
-    data: JSON.stringify({ message: "is test" }),
+    data: JSON.stringify({ message: text }),
     dataType: "json",
     contentType: "application/json"
   })
     .done(json => {
-      console.log(JSON.parse(json));
+      $(".translated").text(json.result);
     })
     .fail((xhr, status, errorThrown) => {
-      console.log(errorThrown);
+      $(".translated").text(xhr.responseJSON.result);
     });
 }
