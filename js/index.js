@@ -30,7 +30,7 @@ $(document).ready(() => {
 $("#add-post-btn").click(e => {
   e.preventDefault();
   if (Login.isLoggedIn()) {
-    let popup = window.open("../upload.html", "a", "width=400, height=500");
+    let popup = window.open("../esc/upload.html", "a", "width=400, height=500");
     var popupTick = setInterval(() => {
       if (popup.closed) {
         clearInterval(popupTick);
