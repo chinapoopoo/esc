@@ -11,37 +11,40 @@ const userSub = db.collection("Users").onSnapshot(querySnapshot => {
     }
   });
 });
-const msgSub = db.collection("Messages").onSnapshot(querySnapshot => {
-  querySnapshot.docChanges().forEach(change => {
-    if (change.type === "added") {
-      const data = change.doc.data();
-      let userInfo;
-      if (Login.isLoggedIn()) {
-        userInfo = Login.getUser();
-      } else userInfo = {};
+const msgSub = db
+  .collection("Messages")
+  .orderBy("regDttm")
+  .onSnapshot(querySnapshot => {
+    querySnapshot.docChanges().forEach(change => {
+      if (change.type === "added") {
+        const data = change.doc.data();
+        let userInfo;
+        if (Login.isLoggedIn()) {
+          userInfo = Login.getUser();
+        } else userInfo = {};
 
-      if (userInfo.id == data["uid"])
-        $(".messages").append(
-          myMessage(
-            data["profileUrl"],
-            data["nickname"],
-            data["message"],
-            convertDttm(data["regDttm"])
-          )
-        );
-      else
-        $(".messages").append(
-          othersMessage(
-            data["profileUrl"],
-            data["nickname"],
-            data["message"],
-            convertDttm(data["regDttm"])
-          )
-        );
-    }
+        if (userInfo.id == data["uid"])
+          $(".messages").append(
+            myMessage(
+              data["profileUrl"],
+              data["nickname"],
+              data["message"],
+              convertDttm(data["regDttm"])
+            )
+          );
+        else
+          $(".messages").append(
+            othersMessage(
+              data["profileUrl"],
+              data["nickname"],
+              data["message"],
+              convertDttm(data["regDttm"])
+            )
+          );
+      }
+    });
+    scrollToEnd();
   });
-  scrollToEnd();
-});
 const convertDttm = dttm => new Date(dttm).toLocaleString();
 
 $(document).ready(() => {
