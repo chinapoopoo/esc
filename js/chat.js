@@ -1,70 +1,155 @@
 import * as Login from "./login.js";
 
+const db = firebase.firestore();
+const userSub = db.collection("Users").onSnapshot(querySnapshot => {
+  querySnapshot.docChanges().forEach(change => {
+    if (change.type === "added") {
+      const data = change.doc.data();
+      $(".party-list").append(
+        participant(data["profileUrl"], data["nickname"])
+      );
+    }
+  });
+});
+const msgSub = db.collection("Messages").onSnapshot(querySnapshot => {
+  querySnapshot.docChanges().forEach(change => {
+    if (change.type === "added") {
+      const data = change.doc.data();
+      let userInfo;
+      if (Login.isLoggedIn()) {
+        userInfo = Login.getUser();
+      } else userInfo = {};
+
+      if (userInfo.id == data["uid"])
+        $(".messages").append(
+          myMessage(
+            data["profileUrl"],
+            data["nickname"],
+            data["message"],
+            convertDttm(data["regDttm"])
+          )
+        );
+      else
+        $(".messages").append(
+          othersMessage(
+            data["profileUrl"],
+            data["nickname"],
+            data["message"],
+            convertDttm(data["regDttm"])
+          )
+        );
+    }
+  });
+  scrollToEnd();
+});
+const convertDttm = dttm => new Date(dttm).toLocaleString();
+
 $(document).ready(() => {
   scrollToEnd();
-  $("input").on("keyup", e => {
+  $("input").on("keypress", e => {
     if (e.keyCode == 13) {
       if (!Login.isLoggedIn()) {
-        alert("Please login first");
+        alert("You have to login first.");
         Login.login();
         return;
       }
-      $(".messages").append(myMessage($("input").val()));
-      $("input").val("");
-      scrollToEnd();
+      if ($("input").val().length > 0) {
+        userJoin();
+        addMessage($("input").val());
+        $("input").val("");
+      }
     }
   });
 });
 
-function scrollToEnd() {
+$(document).unload(() => {
+  userSub();
+  msgSub();
+});
+
+const userJoin = () => {
+  const userInfo = Login.getUser();
+  db.collection("Users")
+    .doc(userInfo.id)
+    .set(
+      {
+        uid: userInfo.id,
+        profileUrl: userInfo.thumbnail_image_url,
+        nickname: userInfo.nickname
+      },
+      { merge: true }
+    );
+};
+
+const addMessage = message => {
+  const userInfo = Login.getUser();
+  db.collection("Messages")
+    .doc()
+    .set({
+      uid: userInfo.id,
+      profileUrl: userInfo.thumbnail_image_url,
+      nickname: userInfo.nickname,
+      message: message,
+      regDttm: new Date().getTime()
+    });
+};
+
+const participant = (img, name) => `
+  <div class="participant">
+    <img
+      src="${img}"
+      alt=""
+    />
+    <div class="col">
+      <div class="name">
+        ${name}
+      </div>
+    </div>
+  </div>`;
+
+const scrollToEnd = () => {
   $(".chat-list").animate(
     {
       scrollTop: $(".messages").height()
     },
     700
   );
-}
+};
 
-function othersMessage() {
+const othersMessage = (img, name, message, dttm) => {
   return `
     <div class="message other">
-        <img src="img/a.jpg" alt="" />
+        <img src="${img}" alt="" />
         <div class="col">
             <div class="name">
-                blue_lim
-            </div>
-            <div class="content">
-                The waves were crashing on the shore; it was a lovely sight.
-                The body may perhaps compensates for the loss of a true
-                metaphysics. She wrote him a long letter, but he didn't read
-                it. Check back tomorrow; I will see if the book has arrived.
-                Abstraction is often one floor above you. A song can make or
-                ruin a person’s day if they let it get to them. The mysterious
-                diary records the voice.
-            </div>
-            <div class="date">
-                2019-11-17 12:00
-            </div>
-        </div>
-    </div>
-    `;
-}
-
-function myMessage(message) {
-  return `
-    <div class="mine">
-        <div class="col">
-            <div class="name">
-                blue_lim
+                ${name}
             </div>
             <div class="content">
                 ${message}
             </div>
             <div class="date">
-                2019-11-17 12:00
+                ${dttm}
             </div>
         </div>
-        <img src="img/a.jpg" alt="" />
     </div>
     `;
-}
+};
+
+const myMessage = (img, name, message, dttm) => {
+  return `
+    <div class="mine">
+        <div class="col">
+            <div class="name">
+                ${name}
+            </div>
+            <div class="content">
+                ${message}
+            </div>
+            <div class="date">
+                ${dttm}
+            </div>
+        </div>
+        <img src="${img}" alt="" />
+    </div>
+    `;
+};

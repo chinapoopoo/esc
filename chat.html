@@ -19,78 +19,10 @@
       <div class="chat-container">
         <div class="party-list">
           <div class="part-title">Participants <span>(128)</span></div>
-          <div class="participant">
-            <img
-              src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-              alt=""
-            />
-            <div class="col">
-              <div class="name">
-                blue_lim
-              </div>
-              <div>
-                Joined at 2019-11-17
-              </div>
-            </div>
-          </div>
         </div>
         <div class="chat-list">
           <div class="messages">
             <div class="part-title">Messages <span>(1024)</span></div>
-            <div class="message">
-              <img src="img/a.jpg" alt="" />
-              <div class="col">
-                <div class="name">
-                  blue_lim
-                </div>
-                <div class="content">
-                  hi
-                </div>
-                <div class="date">
-                  2019-11-17 12:00
-                </div>
-              </div>
-            </div>
-            <div class="message">
-              <img src="img/a.jpg" alt="" />
-              <div class="col">
-                <div class="name">
-                  blue_lim
-                </div>
-                <div class="content">
-                  The waves were crashing on the shore; it was a lovely sight.
-                  The body may perhaps compensates for the loss of a true
-                  metaphysics. She wrote him a long letter, but he didn't read
-                  it. Check back tomorrow; I will see if the book has arrived.
-                  Abstraction is often one floor above you. A song can make or
-                  ruin a person’s day if they let it get to them. The mysterious
-                  diary records the voice.
-                </div>
-                <div class="date">
-                  2019-11-17 12:00
-                </div>
-              </div>
-            </div>
-            <div class="mine">
-              <div class="col">
-                <div class="name">
-                  blue_lim
-                </div>
-                <div class="content">
-                  Sometimes it is better to just walk away from things and go
-                  back to them later when you’re in a better frame of mind. Tom
-                  got a small piece of pie. If Purple People Eaters are real…
-                  where do they find purple people to eat? The mysterious diary
-                  records the voice. She did not cheat on the test, for it was
-                  not the right thing to do. I often see the time 11:11 or 12:34
-                  on clocks. We need to rent a room for our party.
-                </div>
-                <div class="date">
-                  2019-11-17 12:00
-                </div>
-              </div>
-              <img src="img/a.jpg" alt="" />
-            </div>
           </div>
           <div class="chat-input">
             <input type="text" placeholder="Please type your message..." />
@@ -103,5 +35,23 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="module" src="js/common.js"></script>
     <script type="module" src="js/chat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDUuP0Cajm17wvzPQhiQeoG36gwgwC7iAw",
+        authDomain: "escommunity-a6bec.firebaseapp.com",
+        databaseURL: "https://escommunity-a6bec.firebaseio.com",
+        projectId: "escommunity-a6bec",
+        storageBucket: "escommunity-a6bec.appspot.com",
+        messagingSenderId: "920130561801",
+        appId: "1:920130561801:web:b0809dc089a82d7cd455d8",
+        measurementId: "G-FDLH7VRT6J"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>
