@@ -15,72 +15,30 @@
   </head>
   <body>
     <div class="container">
+      <div style="float: right; margin-bottom: 5px;">
+        <button id="add-post-btn">New post</button>
+      </div>
       <div class="row">
         <div class="col-md-8">
           <div class="page-header">
             <div class="blog">
-              <h5>November,17 2019</h5>
               <img
                 src="img/undraw_community_8nwl.png"
                 class="img-responsive"
                 alt=""
               />
-              <p>
-                He told us a very exciting adventure story. Two seats were
-                vacant. I would have gotten the promotion, but my attendance
-                wasn’t good enough.
-              </p>
-
-              <h3>I want to buy a onesie… but know it won’t suit me.</h3>
+              <h3>
+                EVERYTHING YOU NEED FOR HANDONG LIFE
+              </h3>
 
               <p>
-                A glittering gem is not enough. I want to buy a onesie… but know
-                it won’t suit me. My Mum tries to be cool by saying that she
-                likes all the same things that I do. We have a lot of rain in
-                June. I was very proud of my nickname throughout high school but
-                today- I couldn’t be any different to what my nickname was. I
-                currently have 4 windows open up… and I don’t know why.
+                Have you experienced any difficulties while in Handong? You
+                probably want to keep in touch with other exchange students. May
+                be you needed to call school office but you couldn’t find the
+                number? Sometimes you want to eat something special but don’t
+                know what to eat. And when you need to translate your language
+                to Korean… use ESCommunity! We have every essential information!
               </p>
-
-              <p>
-                What was the person thinking when they discovered cow’s milk was
-                fine for human consumption… and why did they do it in the first
-                place!?
-              </p>
-
-              <p>
-                The river stole the gods. She did her best to help him. I think
-                I will buy the red car, or I will lease the blue one. Should we
-                start class now, or should we wait for everyone to get here?
-              </p>
-              <div class="ficon">
-                <a href="#" alt="">Read more</a>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <nav>
-                <ul class="pagination">
-                  <li>
-                    <a href="#"
-                      ><span aria-hidden="true">&laquo;</span
-                      ><span class="sr-only">Previous</span></a
-                    >
-                  </li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li>
-                    <a href="#"
-                      ><span aria-hidden="true">&raquo;</span
-                      ><span class="sr-only">Next</span></a
-                    >
-                  </li>
-                </ul>
-              </nav>
             </div>
           </div>
         </div>
@@ -90,6 +48,7 @@
             <div class="panel-heading">
               <strong>Recent Posts</strong>
             </div>
+            <div class="panel-body"></div>
           </div>
         </div>
       </div>
@@ -97,6 +56,26 @@
 
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDUuP0Cajm17wvzPQhiQeoG36gwgwC7iAw",
+        authDomain: "escommunity-a6bec.firebaseapp.com",
+        databaseURL: "https://escommunity-a6bec.firebaseio.com",
+        projectId: "escommunity-a6bec",
+        storageBucket: "escommunity-a6bec.appspot.com",
+        messagingSenderId: "920130561801",
+        appId: "1:920130561801:web:b0809dc089a82d7cd455d8",
+        measurementId: "G-FDLH7VRT6J"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
     <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>

@@ -39,12 +39,6 @@ $(document).ready(() => {
     e.preventDefault();
     Login.login();
   });
-  [
-    popularContent(),
-    popularContent(),
-    popularContent(),
-    popularContent()
-  ].map(content => $(".panel-default").append(content));
 });
 
 function headerContent() {
@@ -118,28 +112,5 @@ function footerContent() {
             <a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>
         </div>
     </footer>
-    `;
-}
-
-function popularContent() {
-  return `
-    <div class="panel-body">
-        <div class="media">
-            <a class="media-left" href="#">
-                <img src="img/a.jpg" alt="" />
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Student 1</h4>
-                    <p>
-                        He told us a very exciting adventure story.
-                        Two seats were vacant.
-                        I would have gotten the promotion, but my attendance wasn’t good enough.
-                    </p>
-                <div class="ficon">
-                    <a href="#" alt="">Read more</a>
-                </div>
-            </div>
-        </div>
-    </div>
     `;
 }

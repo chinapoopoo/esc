@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upload</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <style>
+      textarea {
+        width: 100%;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>
+      Content
+    </h2>
+    <textarea></textarea>
+    <br />
+    <button id="submit">Submit</button>
+
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script type="module" src="js/upload.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDUuP0Cajm17wvzPQhiQeoG36gwgwC7iAw",
+        authDomain: "escommunity-a6bec.firebaseapp.com",
+        databaseURL: "https://escommunity-a6bec.firebaseio.com",
+        projectId: "escommunity-a6bec",
+        storageBucket: "escommunity-a6bec.appspot.com",
+        messagingSenderId: "920130561801",
+        appId: "1:920130561801:web:b0809dc089a82d7cd455d8",
+        measurementId: "G-FDLH7VRT6J"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+  </body>
+</html>
